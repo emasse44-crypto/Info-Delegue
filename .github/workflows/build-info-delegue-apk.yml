@@ -13,6 +13,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
     steps:
       - name: Récupérer le dépôt
         uses: actions/checkout@v4
@@ -21,12 +24,16 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - name: Vérifier et installer le SDK Android
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          ls "$ANDROID_HOME/cmdline-tools"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-35" "build-tools;35.0.0"
       - name: Installer Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Installer Android SDK
-        uses: android-actions/setup-android@v3
       - name: Construire l’APK Android 8+
         working-directory: android-apk
         run: gradle --no-daemon assembleDebug
