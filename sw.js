@@ -1,5 +1,5 @@
-const CACHE = 'info-delegue-v2';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg', './documents/reglement-general-championnats-nationaux-2026-2027.pdf', './documents/reglement-championnats-regionaux-seniors-masculins-2026-2027.pdf', './documents/reglement-coupe-de-france-credit-agricole-2026-2027.pdf', './documents/reglement-coupe-pays-de-la-loire-seniors-masculins-2026-2027.pdf', './documents/reglement-coupe-gambardella-credit-agricole-2026-2027.pdf', './documents/reglement-championnats-regionaux-departementaux-seniors-futsal-lfpl-2026-2027.pdf'];
+const CACHE = 'info-delegue-v3';
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg', './reglement-general-championnats-nationaux-2026-2027.pdf', './reglement-championnats-regionaux-seniors-masculins-2026-2027.pdf', './reglement-coupe-de-france-credit-agricole-2026-2027.pdf', './reglement-coupe-pays-de-la-loire-seniors-masculins-2026-2027.pdf', './reglement-coupe-gambardella-credit-agricole-2026-2027.pdf', './reglement-championnats-regionaux-departementaux-seniors-futsal-lfpl-2026-2027.pdf'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
