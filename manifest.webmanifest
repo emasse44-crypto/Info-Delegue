@@ -1,15 +1,23 @@
 {
-  "id": "./",
+  "id": "/Info-Delegue/",
   "name": "Info Délégué",
   "short_name": "Info Délégué",
-  "description": "Accès rapide aux règlements officiels des compétitions de football.",
-  "start_url": "./",
-  "scope": "./",
+  "description": "Accès aux règlements officiels, aux documents PDF et au guide FMI pour les délégués de football.",
+  "start_url": "/Info-Delegue/?source=pwa",
+  "scope": "/Info-Delegue/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "any",
   "background_color": "#f3f6f4",
   "theme_color": "#123b2a",
+  "lang": "fr-FR",
+  "prefer_related_applications": false,
   "icons": [
-    {"src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+    {
+      "src": "/Info-Delegue/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }
