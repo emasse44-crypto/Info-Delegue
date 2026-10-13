@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "Info Délégué",
+  "short_name": "Info Délégué",
+  "description": "Accès rapide aux règlements officiels des compétitions de football.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f3f6f4",
+  "theme_color": "#123b2a",
+  "icons": [
+    {"src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
