@@ -10,7 +10,27 @@ android {
         applicationId 'fr.infodelegue.app'
         minSdk 26
         targetSdk 28
-        versionCode 1
-        versionName '1.0'
+        versionCode 2
+        versionName '1.1-hors-ligne'
     }
 }
+
+dependencies {
+    implementation 'androidx.core:core:1.13.1'
+}
+
+tasks.register('copyInfoDelegueSite', Copy) {
+    from(rootProject.projectDir.parentFile) {
+        include 'index.html'
+        include 'reglement.html'
+        include 'manifest.webmanifest'
+        include '*.pdf'
+        include 'reglement/**'
+        include 'documents/**'
+    }
+    into layout.buildDirectory.dir('generated/infoDelegueAssets/site')
+}
+tasks.named('preBuild').configure {
+    dependsOn tasks.named('copyInfoDelegueSite')
+}
+android.sourceSets.main.assets.srcDir(layout.buildDirectory.dir('generated/infoDelegueAssets'))
