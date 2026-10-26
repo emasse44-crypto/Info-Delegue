@@ -10,8 +10,8 @@ android {
         applicationId 'fr.infodelegue.app'
         minSdk 26
         targetSdk 28
-        versionCode 2
-        versionName '1.1-hors-ligne'
+        versionCode 3
+        versionName '1.2-hors-ligne'
     }
 }
 
@@ -29,6 +29,16 @@ tasks.register('copyInfoDelegueSite', Copy) {
         include 'documents/**'
     }
     into layout.buildDirectory.dir('generated/infoDelegueAssets/site')
+    doLast {
+        fileTree(layout.buildDirectory.dir('generated/infoDelegueAssets/site')).matching {
+            include '**/*.html'
+        }.files.each { html ->
+            def source = html.getText('UTF-8')
+            source = source.replaceAll(/(?i)\s+target\s*=\s*["']_blank["']/, '')
+            source = source.replaceAll(/(?i)\s+rel\s*=\s*["']noopener["']/, '')
+            html.write(source, 'UTF-8')
+        }
+    }
 }
 tasks.named('preBuild').configure {
     dependsOn tasks.named('copyInfoDelegueSite')
